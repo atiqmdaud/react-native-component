@@ -1,11 +1,11 @@
 import {StyleSheet, SafeAreaView, ScrollView, Text} from 'react-native';
 import React from 'react';
-
+import FormInvoice from './components/FormInvoice/FormInvoice';
 function App() {
   return (
     <SafeAreaView>
       <ScrollView>
-        <Text>123</Text>
+        <FormInvoice />
       </ScrollView>
     </SafeAreaView>
   );
