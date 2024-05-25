@@ -276,7 +276,15 @@ const FormInvoice = () => {
           </>
         )}
 
-        <View style={{margin: 15}}>
+        <View
+          style={{
+            width: 150,
+            display: 'flex',
+            flexDirection: 'row',
+            margin: 25,
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}>
           <Button
             title="Generate"
             onPress={BtnGenerate}
@@ -284,9 +292,8 @@ const FormInvoice = () => {
               !isNaN(formState.total) && formState.total > 0 ? false : true
             }
           />
-        </View>
-        <View style={{}}>
           <Button
+            color={'red'}
             title="Reset"
             onPress={() => {
               dispatch({

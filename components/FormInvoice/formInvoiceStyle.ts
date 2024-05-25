@@ -10,8 +10,8 @@ export const styles = StyleSheet.create({
 
   label: {
     fontSize: 26,
-    // paddingHorizontal: 10,
-    // paddingVertical: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
     color: 'black',
     paddingRight: 35,
     // justifyContent: 'center',
@@ -30,37 +30,38 @@ export const styles = StyleSheet.create({
   },
   textinput: {
     fontSize: 22,
-    // paddingHorizontal: 100,
-    // paddingVertical: 15,
+    paddingHorizontal: 107,
+    paddingVertical: 12,
     width: 300,
     borderWidth: 1,
     borderColor: 'purple',
     borderRadius: 8,
     color: 'black',
-    paddingLeft: 5, // to ensure the text is never behind the icon
+    paddingLeft: 5,
   },
 });
 
 export const pickerSelectStyles = StyleSheet.create({
   inputIOS: {
-    fontSize: 16,
+    fontSize: 22,
     paddingVertical: 12,
-    paddingHorizontal: 10,
+    // paddingHorizontal: 200,
+    width: 300,
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 4,
     color: 'black',
-    paddingRight: 30, // to ensure the text is never behind the icon
+    paddingRight: 30,
   },
   inputAndroid: {
     fontSize: 22,
-    paddingHorizontal: 10,
-    // paddingVertical: 15,
+    // paddingHorizontal: 200,
+    paddingVertical: 12,
     width: 300,
     borderWidth: 1,
     borderColor: 'purple',
     borderRadius: 8,
     color: 'black',
-    paddingLeft: 5, // to ensure the text is never behind the icon
+    paddingLeft: 5,
   },
 });
