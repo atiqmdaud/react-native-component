@@ -94,11 +94,19 @@ const reducer = (state: formState, action: {type: string; payload: any}) => {
 const FormInvoice = () => {
   const [formState, dispatch] = useReducer(reducer, initialFormState);
   // console.log('formstate:', formState.service);
+  const [hasBlur, setHasBlur] = useState({
+    selectCompany: false,
+    selectClient: false,
+    selectService: false,
+    insertQuantity: false,
+  });
 
   function BtnGenerate() {
     Alert.alert('Data:', JSON.stringify(formState, null, 2));
     // console.log(formState);
   }
+
+  function HandleOnClose() {}
 
   return (
     <>
@@ -120,6 +128,19 @@ const FormInvoice = () => {
           Company:
         </Text>
         <RNPickerSelect
+          onClose={() => {
+            {
+              setHasBlur({...hasBlur, selectCompany: true});
+            }
+          }} // iOS only
+          fixAndroidTouchableBug
+          touchableWrapperProps={{
+            onBlur: () => {
+              {
+                setHasBlur({...hasBlur, selectCompany: true});
+              }
+            },
+          }} // Android only
           useNativeAndroidPickerStyle={false}
           value={formState.company}
           onValueChange={(value: string, index: number) => {
@@ -137,6 +158,11 @@ const FormInvoice = () => {
           items={companyList}
           style={pickerSelectStyles}
         />
+        {!formState.company && hasBlur.selectCompany && (
+          <Text style={{color: 'red', fontSize: 16}}>
+            Please select Company Name
+          </Text>
+        )}
 
         {formState.company && (
           <>
@@ -147,10 +173,22 @@ const FormInvoice = () => {
               Client:{' '}
             </Text>
             <RNPickerSelect
+              onClose={() => {
+                {
+                  setHasBlur({...hasBlur, selectClient: true});
+                }
+              }} // iOS only
+              fixAndroidTouchableBug
+              touchableWrapperProps={{
+                onBlur: () => {
+                  {
+                    setHasBlur({...hasBlur, selectClient: true});
+                  }
+                },
+              }} // Android only
               value={formState.client}
               useNativeAndroidPickerStyle={false}
               onValueChange={(value: string, index: number) => {
-                // console.log(123);
                 if (index !== 0) {
                   dispatch({
                     type: 'select client',
@@ -165,6 +203,11 @@ const FormInvoice = () => {
               items={clientList[formState.company as keyof typeof clientList]}
               style={pickerSelectStyles}
             />
+            {!formState.client && hasBlur.selectClient && (
+              <Text style={{color: 'red', fontSize: 16}}>
+                Please select Client Name
+              </Text>
+            )}
           </>
         )}
 
@@ -177,6 +220,19 @@ const FormInvoice = () => {
               Service:
             </Text>
             <RNPickerSelect
+              onClose={() => {
+                {
+                  setHasBlur({...hasBlur, selectService: true});
+                }
+              }} // iOS only
+              fixAndroidTouchableBug
+              touchableWrapperProps={{
+                onBlur: () => {
+                  {
+                    setHasBlur({...hasBlur, selectService: true});
+                  }
+                },
+              }} // Android only
               value={{
                 serviceName: formState.service[0],
                 unitPrice: formState.unitPrice[0],
@@ -203,6 +259,11 @@ const FormInvoice = () => {
                 servicesListRN[formState.client as keyof typeof servicesListRN]
               }
             />
+            {!formState.service[0] && hasBlur.selectService && (
+              <Text style={{color: 'red', fontSize: 16}}>
+                Please select service
+              </Text>
+            )}
           </>
         )}
 
@@ -228,6 +289,9 @@ const FormInvoice = () => {
               Quantity:
             </Text>
             <TextInput
+              onFocus={() => {
+                setHasBlur({...hasBlur, insertQuantity: true});
+              }}
               style={styles.textinput}
               value={formState.quantity}
               onChangeText={text => {
@@ -238,6 +302,12 @@ const FormInvoice = () => {
               }}
               placeholder="Insert quantity.."
             />
+            {(formState.quantity === '' || formState.quantity === 0) &&
+              hasBlur.insertQuantity && (
+                <Text style={{color: 'red', fontSize: 16}}>
+                  Please insert correct quantity
+                </Text>
+              )}
           </>
         )}
 
@@ -296,6 +366,12 @@ const FormInvoice = () => {
             color={'red'}
             title="Reset"
             onPress={() => {
+              setHasBlur({
+                selectCompany: false,
+                selectClient: false,
+                selectService: false,
+                insertQuantity: false,
+              });
               dispatch({
                 type: 'reset button',
                 payload: {resetString: '', resetList: []},
