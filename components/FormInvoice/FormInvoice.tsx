@@ -348,7 +348,7 @@ const FormInvoice = () => {
 
         <View
           style={{
-            width: 150,
+            width: 160,
             display: 'flex',
             flexDirection: 'row',
             margin: 25,
