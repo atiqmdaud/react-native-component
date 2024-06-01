@@ -134,6 +134,8 @@ const FormInvoice = () => {
                 ...hasBlur,
                 selectCompany: true,
                 selectClient: false,
+                selectService: false,
+                insertQuantity: false,
               });
             }
           }} // iOS only
@@ -145,6 +147,8 @@ const FormInvoice = () => {
                   ...hasBlur,
                   selectCompany: true,
                   selectClient: false,
+                  selectService: false,
+                  insertQuantity: false,
                 });
               }
             },
@@ -187,6 +191,7 @@ const FormInvoice = () => {
                     ...hasBlur,
                     selectClient: true,
                     selectService: false,
+                    insertQuantity: false,
                   });
                 }
               }} // iOS only
@@ -199,6 +204,7 @@ const FormInvoice = () => {
                       ...hasBlur,
                       selectClient: true,
                       selectService: false,
+                      insertQuantity: false,
                     });
                   }
                 },
