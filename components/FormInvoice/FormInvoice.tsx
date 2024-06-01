@@ -326,6 +326,10 @@ const FormInvoice = () => {
               style={styles.textinput}
               value={formState.quantity}
               onChangeText={text => {
+                // console.log(hasBlur.insertQuantity);
+                // hasBlur.insertQuantity = hasBlur.insertQuantity ? true : true;
+                hasBlur.insertQuantity = true;
+                // console.log(hasBlur.insertQuantity);
                 dispatch({
                   type: 'insert quantity',
                   payload: {quantity: text, quantity2: ''},
