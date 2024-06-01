@@ -130,14 +130,22 @@ const FormInvoice = () => {
         <RNPickerSelect
           onClose={() => {
             {
-              setHasBlur({...hasBlur, selectCompany: true});
+              setHasBlur({
+                ...hasBlur,
+                selectCompany: true,
+                selectClient: false,
+              });
             }
           }} // iOS only
           fixAndroidTouchableBug
           touchableWrapperProps={{
             onBlur: () => {
               {
-                setHasBlur({...hasBlur, selectCompany: true});
+                setHasBlur({
+                  ...hasBlur,
+                  selectCompany: true,
+                  selectClient: false,
+                });
               }
             },
           }} // Android only
@@ -175,14 +183,23 @@ const FormInvoice = () => {
             <RNPickerSelect
               onClose={() => {
                 {
-                  setHasBlur({...hasBlur, selectClient: true});
+                  setHasBlur({
+                    ...hasBlur,
+                    selectClient: true,
+                    selectService: false,
+                  });
                 }
               }} // iOS only
               fixAndroidTouchableBug
               touchableWrapperProps={{
                 onBlur: () => {
                   {
-                    setHasBlur({...hasBlur, selectClient: true});
+                    // console.log('onblur');//run on every selection.
+                    setHasBlur({
+                      ...hasBlur,
+                      selectClient: true,
+                      selectService: false,
+                    });
                   }
                 },
               }} // Android only
@@ -222,14 +239,22 @@ const FormInvoice = () => {
             <RNPickerSelect
               onClose={() => {
                 {
-                  setHasBlur({...hasBlur, selectService: true});
+                  setHasBlur({
+                    ...hasBlur,
+                    selectService: true,
+                    insertQuantity: false,
+                  });
                 }
               }} // iOS only
               fixAndroidTouchableBug
               touchableWrapperProps={{
                 onBlur: () => {
                   {
-                    setHasBlur({...hasBlur, selectService: true});
+                    setHasBlur({
+                      ...hasBlur,
+                      selectService: true,
+                      insertQuantity: false,
+                    });
                   }
                 },
               }} // Android only
